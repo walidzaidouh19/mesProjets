@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js"
+xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+>
+
+			<h:form id="Ajouter">
+			<p:dialog header="Ajouter Une Commande" widgetVar="AjouterCmd"
+				resizable="false" id="ajouter" modal="true" appendToBody="true">
+				<p:growl id="growl" showDetail="true" sticky="false" life="10000" />
+				<p:messages autoUpdate="true"/>
+				<h:panelGrid columns="2" cellpadding="5">
+				
+					<p:outputLabel value="intitule" for="cne" style="font-weight:bold"/>
+					<p:inputText
+						id="cne" required="true"
+						value="#{CommandeBean.commande.intitulecommande}"
+						requiredMessage="intitule est obligatoire"/>
+				</h:panelGrid>
+				<p:separator style="margin-top:10px; margin-bottom:10px;"/>
+				<p:commandButton value="Enregistrer"
+					ajax="false" validateClient="true" 
+					actionListener="#{CommandeBean.addCommande(actionEvent)}"				
+					oncomplete="PF('AjouterCmd').hide()" style="float:right" />
+			</p:dialog>
+		</h:form>
+	</html>
